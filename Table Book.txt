@@ -1,0 +1,181 @@
+Table: Book
+
+Columns: 
+- ISBN (primary key, VARCHAR(20))
+- Title (VARCHAR(100))
+- Publication_year (YEAR)
+- Price (DECIMAL(10,2))
+- Genre_id (foreign key, INT)
+
+Query to create table:
+
+CREATE TABLE Book (
+ISBN VARCHAR(20) PRIMARY KEY,
+Title VARCHAR(100),
+Publication_year YEAR,
+Price DECIMAL(10,2),
+Genre_id INT,
+FOREIGN KEY (Genre_id) REFERENCES Genre(Genre_id)
+);
+
+Example insert statements:
+
+INSERT INTO Book (ISBN, Title, Publication_year, Price, Genre_id) VALUES 
+("978-0735619678", "Code Complete 2nd Edition", 2004, 39.99, 4),
+("978-1501128255", "Tools of Titans", 2016, 17.09, 6),
+("978-1593276034", "The Linux Command Line", 2009, 44.99, 7),
+("978-0061122415", "To Kill a Mockingbird", 1960, 12.99, 1),
+("978-0735211292", "The Girl Who Takes an Eye for an Eye", 2017, 29.00, 2);
+
+Table: Genre
+
+Columns: 
+- Genre_id (primary key, INT)
+- Name (VARCHAR(50))
+- Description (VARCHAR(255))
+
+Query to create table:
+
+CREATE TABLE Genre (
+Genre_id INT PRIMARY KEY,
+Name VARCHAR(50),
+Description VARCHAR(255)
+);
+
+Example insert statements:
+
+INSERT INTO Genre (Genre_id, Name, Description) VALUES 
+(1, "Fiction", "Imaginative or invented writing."),
+(2, "Mystery", "Puzzling or unknown situations and stories."),
+(3, "Biography", "Story of someone's life, written by another person."),
+(4, "Computer Science", "Books related to computer science."),
+(5, "Romance", "Love stories."),
+(6, "Self-help", "Books about personal improvement."),
+(7, "Technology", "Books related to technology.");
+
+Table: Author
+
+Columns: 
+- Author_id (primary key, INT)
+- Name (VARCHAR(100))
+
+Query to create table:
+
+CREATE TABLE Author (
+Author_id INT PRIMARY KEY,
+Name VARCHAR(100)
+);
+
+Example insert statements:
+
+INSERT INTO Author (Author_id, Name) VALUES 
+(1, "Ernest Hemingway"),
+(2, "J.K. Rowling"),
+(3, "George R.R. Martin"),
+(4, "Steve McConnell"),
+(5, "Tim Ferriss");
+
+Table: Book_Author
+
+Columns: 
+- ISBN (foreign key, VARCHAR(20))
+- Author_id (foreign key, INT)
+
+Query to create table:
+
+CREATE TABLE Book_Author (
+ISBN VARCHAR(20),
+Author_id INT,
+PRIMARY KEY (ISBN, Author_id),
+FOREIGN KEY (ISBN) REFERENCES Book(ISBN),
+FOREIGN KEY (Author_id) REFERENCES Author(Author_id)
+);
+
+Example insert statements:
+
+INSERT INTO Book_Author (ISBN, Author_id) VALUES 
+("978-0684801469", 1),
+("978-0439554930", 2),
+("978-0553381702", 3),
+("978-0735619678", 4),
+("978-1328686017", 5);
+
+Table: Customer
+
+Columns: 
+- Customer_id (primary key, INT)
+- Name (VARCHAR(100))
+- Email_address (VARCHAR(255))
+- Shipping_address (VARCHAR(255))
+
+Query to create table:
+
+CREATE TABLE Customer (
+Customer_id INT PRIMARY KEY,
+Name VARCHAR(100),
+Email_address VARCHAR(255),
+Shipping_address VARCHAR(255)
+);
+
+Example insert statements:
+
+INSERT INTO Customer (Customer_id, Name, Email_address, Shipping_address) VALUES 
+(1, "John Smith", "john.smith@example.com", "123 Main St, Anytown, USA"),
+(2, "Jane Doe", "jane.doe@example.com", "456 Elm St, Anytown, USA"),
+(3, "Bob Johnson", "bob.johnson@example.com", "789 Oak St, Anytown, USA"),
+(4, "Emily Brown", "emily.brown@example.com", "234 Maple St, Anytown, USA"),
+(5, "David Lee", "david.lee@example.com", "567 Pine St, Anytown, USA");
+
+Table: Order
+
+Columns: 
+- Order_id (primary key, INT)
+- Customer_id (foreign key, INT)
+- Order_date (DATETIME)
+
+Query to create table:
+
+CREATE TABLE Order (
+Order_id INT PRIMARY KEY,
+Customer_id INT,
+Order_date DATETIME,
+FOREIGN KEY (Customer_id) REFERENCES Customer(Customer_id)
+);
+
+Example insert statements:
+
+INSERT INTO Order (Order_id, Customer_id, Order_date) VALUES 
+(1, 1, "2022-01-01 10:00:00"),
+(2, 2, "2022-02-01 12:00:00"),
+(3, 1, "2022-03-01 14:00:00"),
+(4, 3, "2022-04-01 16:00:00"),
+(5, 2, "2022-05-01 18:00:00");
+
+Table: Order_Item
+
+Columns: 
+- Order_id (foreign key, INT)
+- ISBN (foreign key, VARCHAR(20))
+- Quantity (INT)
+- Price (DECIMAL(10,2))
+
+Query to create table:
+
+CREATE TABLE Order_Item (
+Order_id INT,
+ISBN VARCHAR(20),
+Quantity INT,
+Price DECIMAL(10,2),
+PRIMARY KEY (Order_id, ISBN),
+FOREIGN KEY (Order_id) REFERENCES Order(Order_id),
+FOREIGN KEY (ISBN) REFERENCES Book(ISBN)
+);
+
+Example insert statements:
+
+INSERT INTO Order_Item (Order_id, ISBN, Quantity, Price) VALUES 
+(1, "978-1430219484", 2, 49.99),
+(1, "978-0596805524", 1, 29.99),
+(2, "978-0316769174", 3, 14.99),
+(3, "978-1455586691", 1, 24.99),
+(5, "978-0062854884", 2, 19.99);
