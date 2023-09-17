@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="col-md-8">
+        <div>
+            <h4>Todo List</h4>
+            <p style=color:red;>{{errorMsg}}</p>
+            <p style=color:green>{{successMsg}}</p>
+        </div>
+        <div style="text-align: right;">
+            <a class="btn btn-success btn-sm" [routerLink]="['/']">Add
+                Task</a>
+        </div>
+        <br />
+        <div class="table-responsive">
+
+            <table id="mytable" class="table table-bordred table-striped">
+
+                <thead>
+                    <th>S.No</th>
+                    <th>Task</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let todo of todo_list; index as i">
+
+                        <td>{{i+1}}</td>
+                        <td>{{todo.task}}</td>
+                        <td>
+                            <a href="javascript: void(0);"
+                                class="btn btn-primary btn-sm"
+                                [routerLink]="['/edit',todo?._id]"
+                                style="margin-right:3px;"> EDIT</a>
+
+                            <a href="javascript: void(0);"
+                                (click)="deleteDoc(todo._id)"
+                                class="btn btn-danger btn-sm"> DEL</a>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+</div>

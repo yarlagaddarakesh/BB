@@ -1,0 +1,18 @@
+<div class="container" style="justify-content: center;">
+    <div class="col-md-6">
+        <h4> Edit </h4>
+        <div>
+            <p style=color:red;>{{errorMsg}}</p>
+            <p style=color:green>{{successMsg}}</p>
+        </div>
+        <form method="post" action [formGroup]="editForm">
+            <div class="form-group">
+                <label for>Task</label>
+                <input type="text" formControlName="task" value
+                    [(ngModel)]="todo_row.task" class="form-control">
+            </div>
+            <br />
+            <button type="submit" (click)="onSubmit()" class="btn btn-success">Update</button>
+        </form>
+    </div>
+</div>
