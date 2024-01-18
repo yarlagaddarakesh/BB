@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<head>
+  <title>Products</title>
+  <style>
+    body {
+      text-align: center;
+      background-color: chartreuse;
+    }
+
+    .c{
+        background-color: blanchedalmond;
+        padding: 10px;
+        margin: 15px;
+        border-radius: 20px;
+    }
+
+    .product {
+      display: inline-block;
+      margin: 20px;
+      background-color: aquamarine;
+      font-weight: bold;
+    }
+
+    .product img {
+      width: 170px;
+      height: 170px;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 6px;
+    }
+
+    .product p {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="c">
+    <h1>Mobile's</h1>
+    <div class="product" onclick="redirect('http://surl.li/plewz')">
+        <img src="img1.jpg" alt="Product 1">
+        <p>Realme narzo N53</p>
+    </div>
+    <div class="product" onclick="redirect('http://surl.li/plezr')">
+        <img src="img2.jpg" alt="Product 2">
+        <p>Redmi 13C</p>
+    </div>
+    <div class="product" onclick="redirect('http://surl.li/plfbb')">
+        <img src="img3.jpg" alt="Product 3">
+        <p>OnePlus Nord CE 3</p>
+    </div>
+    <div class="product" onclick="redirect('http://surl.li/plewz')">
+        <img src="img4.jpg" alt="Product 4">
+        <p>Apple iPhone 13</p>
+    </div>
+    <div class="product" onclick="redirect('http://surl.li/plezr')">
+        <img src="img5.jpg" alt="Product 5">
+        <p>Apple iPhone 15 Pro</p>
+    </div>
+    <div class="product" onclick="redirect('http://surl.li/plfbb')">
+        <img src="img6.jpg" alt="Product 6">
+        <p>Redmi A2</p>
+    </div>
+</div>
+<div class="c">
+    <h1>Laptop's</h1>
+    <div class="product" onclick="redirect('http://surl.li/plewz')">
+        <img src="l1.jpg" alt="Product 1">
+        <p>HP Laptop 15s</p>
+    </div>
+    <div class="product" onclick="redirect('http://surl.li/plezr')">
+        <img src="l2.jpg" alt="Product 2">
+        <p>Dell 15 Laptop</p>
+    </div>
+    <div class="product" onclick="redirect('http://surl.li/plfbb')">
+        <img src="l3.jpg" alt="Product 3">
+        <p>Acer Travelmate</p>
+    </div>
+    <div class="product" onclick="redirect('http://surl.li/plewz')">
+        <img src="l4.jpg" alt="Product 1">
+        <p>HP Laptop 15s</p>
+    </div>
+    <div class="product" onclick="redirect('http://surl.li/plezr')">
+        <img src="l5.jpg" alt="Product 2">
+        <p>HP Laptop 15</p>
+    </div>
+    <div class="product" onclick="redirect('http://surl.li/plfbb')">
+        <img src="l6.jpg" alt="Product 3">
+        <p>Lenovo IdeaPad Slim 1</p>
+    </div>
+</div>
+
+<script>
+  function redirect(link) {
+    window.open(link, '_blank');
+  }
+</script>
+
+</body>
+</html>
